@@ -1,0 +1,249 @@
+@import "bourbon", "neat";
+
+
+$extra-large: new-breakpoint(max-width 1150px 12);
+$large: new-breakpoint(min-width 1111px 12);
+$medium: new-breakpoint(max-width 1110px 4);
+$small: new-breakpoint(max-width 700px 2);
+
+$wrapper-width: 1280px;
+
+$padding: 25px;
+
+$primary-color: #666;
+$secondary-color: #3256b0;
+$tertiary-color: #3c68d4;
+$cta-color: #f0640f;
+
+$background-color: #efefef;
+
+$border-radius: 3px;
+$white-transparent: rgba(255, 255, 255, 0.5);
+
+$logo-height: 45px;
+$logo-height-small: 35px;
+
+*, html {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+
+	font-family: sans-serif;
+}
+
+body {
+	color: $primary-color;
+	background: $background-color;
+}
+
+h1 {
+	font-size: 2em;
+	padding-right: 5%;
+}
+
+h2 {
+	font-size: 1.1em;
+	font-weight: 200;
+	margin-bottom: $padding;
+}
+
+h1, h2, h3, h4 {
+	@include media($small) {
+		text-align: center;
+	}
+}
+
+p {
+	font-size: 1em;
+	line-height: 1.3em;
+}
+
+.wrapper {
+	@include outer-container;
+	width: 86%;
+	max-width: $wrapper-width;
+	// set min-width (background behaves strangely when browser is resized below min width - shouldn't be problematic)
+	min-width: 300px;
+	margin: 0 auto;
+
+	@include media($medium) {
+		//max-width: 480px;
+	}
+
+	@include media($small) {
+		width: 90%;
+	}
+}
+
+header {
+	background: $primary-color url('../images/assets_hero.jpg');
+	background-size: cover;
+	height: 350px;
+	color: white;
+	padding-top: 10px;
+
+	@include media($medium) {
+		height: 200px;
+	}
+
+	nav {
+		padding-top: 25px;
+	}
+
+	#logos {
+		@include span-columns(8);
+
+		img { 
+			height: $logo-height;
+			@include media($small) {
+				height: $logo-height-small;
+			}
+		}
+
+		#plus {
+			margin: 0 15px;
+			font-size: $logo-height;
+			line-height: $logo-height;
+			vertical-align: top;
+			@include media($small) {
+				font-size: $logo-height-small;
+				line-height: $logo-height-small;
+			}
+		}
+
+		@include media($medium) {
+			@include span-columns(4);
+			text-align: center;
+		}
+
+	}
+
+	#login {
+		@include span-columns(4);
+		text-align: right;
+		@include media($medium) {
+			display: none;
+		}
+	}
+
+	#login a {
+		display: block;
+		height: 40px;
+		line-height: 40px;
+		padding: 0 15px;
+
+		display: inline-block;
+		
+		color: white;
+		font-weight: 200;
+		text-decoration: none;
+		border-radius: $border-radius;
+		
+	}
+
+	#demo {
+		background: $cta-color;
+		border: 1px solid $cta-color;
+	}
+
+	#signin {
+		background: none;
+		border: 1px solid $cta-color;
+	}
+}
+
+footer {
+	margin-top: -150px;
+	margin-bottom: 100px;
+
+	@include media($medium) {
+		margin-top: -50px;
+	}
+
+	#footer-primary {
+		@include span-columns(8);
+		padding-right: 5%;
+
+		@include media($medium) {
+			@include span-columns(4);
+		}
+	}
+
+	/* #footer-secondary {
+
+		text-align: right;
+		@include span-columns(4);
+
+		ul li {
+			display: inline-block;
+		}
+
+		@include media($medium) {
+			@include span-columns(4);
+			text-align: center;
+			margin-top: 10px;
+		}
+
+		display: none;
+	} */
+
+	a { text-decoration: none; }
+
+	#tagline {
+		display: inline-block;
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 1.286em;
+		font-weight: 200;
+		color: #365ebf;
+		padding-left: 10px;
+	}
+
+	p#copyright {
+		font-weight: 200;
+		font-size: 0.857em;
+		margin-top: 10px;
+	}
+
+	ul#link-list {
+		list-style-type: circle;
+		font-size: 0.8em;
+		font-weight: 600;
+		li { padding: 15px; }
+	}
+}
+
+#sub-menu {
+	background: blue;
+	color: white;
+	text-align: center;
+	display: none;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+
+	.wrapper { width: 100%; }
+
+	height: 50px;
+	line-height: 50px;
+
+	@include media($medium) {
+		// make visible
+		display: block;
+	}
+
+	.footer-btn a {
+		@include span-columns(6);
+		margin: 0;
+		width: 50%;
+		color: white;
+		text-decoration: none;
+	}
+
+	#footer-demo a {
+	}
+
+	#footer-signup a {
+		background: #00c;
+	}
+}
+@import "accordion";
